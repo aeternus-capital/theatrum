@@ -1,35 +1,56 @@
-import { Hono, type Context } from 'hono';
+import { Hono } from 'hono';
 import assets from './assets.ts';
 import { cors } from 'hono/cors';
 import Wrapper from './wrapper.ts';
 import { decodeBase64 } from 'base64';
 import { poweredBy } from 'hono/powered-by'
 import { basicAuth } from 'hono/basic-auth';
+import type { ConsoleOptions, Fetch } from './types.ts';
 import { TheatrumError, type Theatrum, type IEntities, type IMethods } from '@theatrum/core';
-
-type Fetch = Hono extends {
-    fetch: infer F;
-} ? F : never;
-
-interface ConsoleOptions {
-    enableCORS?: boolean;
-    enableBasicAuth?: boolean;
-    disableTelemetry?: boolean;
-    disableLogging?: boolean;
-}
 
 const prepareAsset = (path: string): string => {
     const raw = decodeBase64(assets[path as keyof typeof assets].content);
     return new TextDecoder().decode(raw);
 }
 
+/**
+ * # Theatrum Console
+ * WebUI for easier locally development using Theatrum framework
+ *
+ * @example Basic usage
+ * ```typescript
+ * import { Theatrum } from '@theatrum/core';
+ * import { TheatrumConsole } from '@theatrum/console';
+ *
+ * const entities = {};
+ * const methods = {};
+ *
+ * // your existing theatrum object
+ * const theatrum = new Theatrum<typeof entities, typeof methods>({
+ *     methods,
+ *     entities,
+ * });
+ *
+ * const console = new TheatrumConsole(theatrum);  // just wrap your exising theatrum object
+ *
+ * Deno.serve(console.handle());  // serve it (for example like in Deno)
+ * ```
+ * @module
+ */
 class TheatrumConsole {
-    app: Hono;
-    theatrum: Theatrum<IEntities, IMethods>;
-    username: string = 'theatrum';
-    password: string = '';
-    options: ConsoleOptions;
+    /** @internal */
+    public app: Hono;
+    private theatrum: Theatrum<IEntities, IMethods>;
+    private username: string = 'theatrum';
+    private password: string = '';
+    private options: ConsoleOptions;
 
+    /**
+     * Constructor
+     *
+     * @param theatrum Use your existing theatrum object, created using @theatrum/core (See basic usage example)
+     * @param options Console options
+     */
     constructor(theatrum: Theatrum<IEntities, IMethods>, options?: ConsoleOptions) {
         this.app = new Hono();
         this.theatrum = theatrum;
@@ -38,7 +59,8 @@ class TheatrumConsole {
         this.setup();
     }
 
-    public setup() {
+    /** Method setup middlewares and set handlers for routes */
+    protected setup(): void {
         this.app.use(poweredBy({ serverName: 'Theatrum Console' }));
 
         this.app.use((c, next) => {
@@ -236,18 +258,27 @@ class TheatrumConsole {
         });
     }
 
+    /** Method return Hono's fetch property */
     public handle(): Fetch {
         return this.app.fetch;
     }
 
+    /**
+     * Method generate password when `enableBasicAuth` option enabled
+     * Override it if you would like to make own auth logic based on basic auth
+     */
     protected generateCredentials(): string {
         this.password = Math.random().toString(36).slice(2);
         return this.password;
     }
 
-    protected log(x: string): void {
+    /**
+     * Method write data into stdout using `console.log`
+     * @param str Information, which need to be logged
+     */
+    protected log(str: string): void {
         if (!this.options.disableLogging) {
-            console.log(`[Theatrum Console]: ${x}`);
+            console.log(`[Theatrum Console]: ${str}`);
         }
     }
 }

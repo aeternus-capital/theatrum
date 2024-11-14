@@ -11,7 +11,7 @@
 </div>
 
 ## Features
-* 👯 Multi-entities model out-of-the-box
+* 👯 Multi-entity model out-of-the-box
 * 💎 Native TypeScript under the hood
 * ✨ No router, auth provider or another vendor lock-in
 * 🪶 Lightweight & minimum dependencies

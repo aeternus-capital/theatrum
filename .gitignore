@@ -12,6 +12,7 @@
 temp
 .tmp
 **/dist
+**/build
 
 # logs
 *.log

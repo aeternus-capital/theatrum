@@ -7,7 +7,7 @@
     "exports": "./src/_.ts",
     "publish": {
         "include": [
-            "dist",
+            "build",
             "src/**/*.ts",
             "LICENSE",
             "README.md"

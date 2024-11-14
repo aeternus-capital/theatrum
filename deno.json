@@ -3,9 +3,5 @@
         "./packages/core",
         "./packages/console",
         "./examples/basic"
-    ],
-    "tasks": {
-        "example:basic": "deno run --watch --allow-net --allow-read ./examples/basic/src/index.ts",
-        "console:build": "cd packages/console/web && yarn install && yarn build && rm -rf ../build && mkdir ../build && cp -r dist/* ../build"
-    }
+    ]
 }

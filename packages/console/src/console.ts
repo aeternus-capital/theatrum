@@ -31,7 +31,7 @@ class TheatrumConsole {
 
         this.setup();
         this.app.use('*', serveStatic({
-            root: import.meta.dirname + '/../web/dist',
+            root: import.meta.dirname + '/build',
         }));
     }
 

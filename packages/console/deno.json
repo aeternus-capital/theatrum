@@ -1,6 +1,6 @@
 {
     "name": "@theatrum/console",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "imports": {
         "hono": "jsr:@hono/hono@4.6.9"
     },

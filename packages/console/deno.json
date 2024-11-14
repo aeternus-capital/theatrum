@@ -10,7 +10,6 @@
             "dist",
             "src/**/*.ts",
             "LICENSE",
-            "LICENSE.LESSER",
             "README.md"
         ]
     }

@@ -222,12 +222,12 @@ class TheatrumConsole {
         return this.app.fetch;
     }
 
-    protected generateCredentials() {
+    protected generateCredentials(): string {
         this.password = Math.random().toString(36).slice(2);
         return this.password;
     }
 
-    protected log(x: string) {
+    protected log(x: string): void {
         if (!this.options.disableLogging) {
             console.log(`[Theatrum Console]: ${x}`);
         }

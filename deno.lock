@@ -2,11 +2,15 @@
   "version": "4",
   "specifiers": {
     "jsr:@hono/hono@4.6.9": "4.6.9",
+    "jsr:@std/encoding@1.0.5": "1.0.5",
     "npm:zod@3.23.8": "3.23.8"
   },
   "jsr": {
     "@hono/hono@4.6.9": {
       "integrity": "4d4975f5c023d4416d26e6dd4a498c56e59958561733f56f55a9be57f023603b"
+    },
+    "@std/encoding@1.0.5": {
+      "integrity": "ecf363d4fc25bd85bd915ff6733a7e79b67e0e7806334af15f4645c569fefc04"
     }
   },
   "npm": {
@@ -18,7 +22,8 @@
     "members": {
       "packages/console": {
         "dependencies": [
-          "jsr:@hono/hono@4.6.9"
+          "jsr:@hono/hono@4.6.9",
+          "jsr:@std/encoding@1.0.5"
         ]
       },
       "packages/core": {

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+<instance-profile id="theatrum" name="Theatrum" start-page="start.topic">
+    <toc-element topic="start.topic">
+        <toc-element topic="install.md"/>
+        <toc-element topic="license.md"/>
+    </toc-element>
+    <toc-element topic="architecture.md">
+        <toc-element topic="entities.md"/>
+        <toc-element topic="methods.md"/>
+        <toc-element topic="actors.md"/>
+        <toc-element topic="executors.md"/>
+    </toc-element>
+    <toc-element toc-title="Integrations">
+        <toc-element topic="integration-nextjs.md"/>
+        <toc-element topic="intergation-mongodb.md"/>
+    </toc-element>
+    <toc-element toc-title="Examples">
+        <toc-element topic="example-basic.md"/>
+        <toc-element topic="example-auth.md"/>
+        <toc-element topic="example-entities.md"/>
+        <toc-element topic="example-roles.md"/>
+        <toc-element topic="example-autogen-doc.md"/>
+        <toc-element topic="example-internal-calls.md"/>
+        <toc-element topic="example-errors.md"/>
+    </toc-element>
+    <toc-element topic="changelog.md"/>
+</instance-profile>

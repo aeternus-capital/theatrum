@@ -1,0 +1,20 @@
+# IDEs
+.idea
+.vscode
+
+# dependencies
+**/node_modules
+
+# secrets
+.env
+
+# temp
+temp
+.tmp
+**/dist
+
+# logs
+*.log
+
+# misc
+**/.DS_Store

@@ -1,0 +1,31 @@
+{
+  "version": "4",
+  "specifiers": {
+    "jsr:@hono/hono@4.6.9": "4.6.9",
+    "npm:zod@3.23.8": "3.23.8"
+  },
+  "jsr": {
+    "@hono/hono@4.6.9": {
+      "integrity": "4d4975f5c023d4416d26e6dd4a498c56e59958561733f56f55a9be57f023603b"
+    }
+  },
+  "npm": {
+    "zod@3.23.8": {
+      "integrity": "sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g=="
+    }
+  },
+  "workspace": {
+    "members": {
+      "packages/console": {
+        "dependencies": [
+          "jsr:@hono/hono@4.6.9"
+        ]
+      },
+      "packages/core": {
+        "dependencies": [
+          "npm:zod@3.23.8"
+        ]
+      }
+    }
+  }
+}

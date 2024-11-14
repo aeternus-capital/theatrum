@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd" title="Theatrum" id="start">
+    <section-starting-page>
+        <title>
+            Theatrum
+        </title>
+        <description>
+            Library for developing backends with a large number of entities
+        </description>
+        <spotlight>
+            <a
+                type="install"
+                href="install.md"
+                summary="Quick install manual"
+            />
+            <a
+                type="start"
+                href="example-basic.md"
+                summary="An example of using the library"
+            />
+        </spotlight>
+        <primary>
+            <title>Basic</title>
+            <a
+                type="idea"
+                href="architecture.md"
+                summary="Philosophy and internal structure"
+            />
+            <a
+                type="check-list"
+                href="changelog.md"
+                summary="What was added or removed from the library"
+            />
+            <a
+                type="documents"
+                href="license.md"
+                summary="The terms of use of Theatrum in your projects"
+            />
+        </primary>
+        <secondary>
+            <title>Integrations</title>
+            <a
+                type="integration"
+                href="integration-nextjs.md"
+                summary="Integration with Next.js"
+            />
+            <a
+                type="integration"
+                href="intergation-mongodb.md"
+                summary="Integration with MongoDB"
+            />
+        </secondary>
+        <misc>
+            <cards>
+                <title>Examples</title>
+                <a
+                    type="mixed"
+                    href="example-basic.md"
+                    summary="The easiest way to use"
+                />
+                <a
+                    type="mixed"
+                    href="example-auth.md"
+                    summary="Using authorization with Theatrum"
+                />
+                <a
+                    type="mixed"
+                    href="example-entities.md"
+                    summary="Working with multiple entities in a project"
+                />
+                <a
+                    type="mixed"
+                    href="example-roles.md"
+                    summary="Limiting method invocation by entity roles"
+                />
+                <a
+                    type="mixed"
+                    href="example-autogen-doc.md"
+                    summary="Generation of automatic documentation based on methods"
+                />
+                <a
+                    type="mixed"
+                    href="example-errors.md"
+                    summary="Producing and handling internal errors"
+                />
+                <a
+                    type="mixed"
+                    href="example-internal-calls.md"
+                    summary="Internal methods invocations"
+                />
+            </cards>
+        </misc>
+    </section-starting-page>
+</topic>

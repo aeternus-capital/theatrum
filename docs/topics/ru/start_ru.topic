@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd" title="Theatrum" id="start_ru"
+       help-id="start.ru">
+    <section-starting-page>
+        <title>
+            Theatrum
+        </title>
+        <description>
+            Библиотека для разработки бекендов с большим количеством сущностей
+        </description>
+        <spotlight>
+            <a
+                type="install"
+                href="install.ru.md"
+                summary="Инструкция по установке"
+            />
+            <a
+                type="start"
+                href="example-basic.ru.md"
+                summary="Пример использования библиотеки"
+            />
+        </spotlight>
+        <primary>
+            <title>Основное</title>
+            <a
+                type="idea"
+                href="architecture.ru.md"
+                summary="Философия и внутреннее устройство"
+            />
+            <a
+                type="check-list"
+                href="changelog.ru.md"
+                summary="Что добавили или удалили из библиотеки"
+            />
+            <a
+                type="documents"
+                href="license.ru.md"
+                summary="Условия использования Theatrum в ваших проектах"
+            />
+        </primary>
+        <secondary>
+            <title>Интеграции</title>
+            <a
+                type="integration"
+                href="integration-nextjs.ru.md"
+                summary="Интеграция с Next.js"
+            />
+            <a
+                type="integration"
+                href="intergation-mongodb.ru.md"
+                summary="Интеграция с MongoDB"
+            />
+        </secondary>
+        <misc>
+            <cards>
+                <title>Примеры использования</title>
+                <a
+                    type="mixed"
+                    href="example-basic.ru.md"
+                    summary="Самый простой способ использования"
+                />
+                <a
+                    type="mixed"
+                    href="example-auth.ru.md"
+                    summary="Использование авторизации с Theatrum"
+                />
+                <a
+                    type="mixed"
+                    href="example-entities.ru.md"
+                    summary="Работа сразу с несколькими сущностями в проекте"
+                />
+                <a
+                    type="mixed"
+                    href="example-roles.ru.md"
+                    summary="Ограничение вызова методов по ролям сущностей"
+                />
+                <a
+                    type="mixed"
+                    href="example-autogen-doc.ru.md"
+                    summary="Генерация автоматической документации на основе методов"
+                />
+                <a
+                    type="mixed"
+                    href="example-errors.ru.md"
+                    summary="Создание и обработка внутренних ошибок"
+                />
+                <a
+                    type="mixed"
+                    href="example-internal-calls.ru.md"
+                    summary="Внутренний вызов методов"
+                />
+            </cards>
+        </misc>
+    </section-starting-page>
+</topic>

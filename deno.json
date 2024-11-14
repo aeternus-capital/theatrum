@@ -1,0 +1,10 @@
+{
+    "workspace": [
+        "./packages/core",
+        "./packages/console",
+        "./examples/basic"
+    ],
+    "tasks": {
+        "example:basic": "deno run --watch --allow-net --allow-read ./examples/basic/src/index.ts"
+    }
+}

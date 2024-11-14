@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.copyright, .version {
+    cursor: default;
+    user-select: none;
+}

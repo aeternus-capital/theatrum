@@ -1,0 +1,7 @@
+.list {
+    margin-top: var(--mantine-spacing-xs);
+
+    div + div {
+        margin-top: var(--mantine-spacing-xs);
+    }
+}

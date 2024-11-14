@@ -1,0 +1,101 @@
+@use "../../_mantine.scss" as mantine;
+
+.execute {
+    display: flex;
+    align-items: center;
+    margin-top: 25px;
+
+    &__run {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    &__debug {
+        height: 36px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        background: var(--mantine-color-green-8);
+        border-left: 1px solid rgba(255, 255, 255, .25);
+
+        &[data-disabled] {
+            background: var(--mantine-color-gray-1);
+        }
+
+        @include mantine.hover {
+            background: var(--mantine-color-green-9);
+
+            &[data-disabled] {
+                background: var(--mantine-color-gray-1);
+            }
+        }
+
+        @include mantine.dark {
+            &[data-disabled] {
+                background: var(--mantine-color-dark-6);
+            }
+
+            @include mantine.hover {
+                &[data-disabled] {
+                    background: var(--mantine-color-dark-6);
+                }
+            }
+        }
+    }
+}
+
+.tabs {
+    position: relative;
+    margin-bottom: var(--mantine-spacing-sm);
+}
+
+.indicator {
+    background-color: var(--mantine-color-white);
+    border-radius: var(--mantine-radius-md);
+    border: 1px solid var(--mantine-color-gray-2);
+    box-shadow: var(--mantine-shadow-sm);
+
+    @include mantine.dark {
+        background-color: var(--mantine-color-dark-6);
+        border-color: var(--mantine-color-dark-4);
+    }
+}
+
+.tab {
+    z-index: 1;
+    font-weight: 500;
+    transition: color 100ms ease;
+    color: var(--mantine-color-gray-7);
+
+    &[data-active] {
+        color: var(--mantine-color-black);
+    }
+
+    @include mantine.dark {
+        color: var(--mantine-color-black-1);
+
+        &[data-active] {
+            color: var(--mantine-color-white);
+        }
+    }
+}
+
+.tracer {
+    &__item {
+        &__title {
+            cursor: default;
+            user-select: none;
+        }
+
+        &__time {
+            display: flex;
+            cursor: default;
+            user-select: none;
+            margin-bottom: 4px;
+            justify-content: space-between;
+
+            * + * {
+                margin-left: var(--mantine-spacing-sm);
+            }
+        }
+    }
+}

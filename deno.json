@@ -3,5 +3,9 @@
         "./packages/core",
         "./packages/console",
         "./examples/basic"
-    ]
+    ],
+    "tasks": {
+        "publish:core": "deno publish -c ./packages/core/deno.json",
+        "publish:console": "deno publish -c ./packages/console/deno.json"
+    }
 }

@@ -1,7 +1,8 @@
-import { Hono } from 'hono';
+import { Hono, type Context } from 'hono';
+import assets from './assets.ts';
 import { cors } from 'hono/cors';
 import Wrapper from './wrapper.ts';
-import { serveStatic } from 'hono/deno';
+import { decodeBase64 } from 'base64';
 import { poweredBy } from 'hono/powered-by'
 import { basicAuth } from 'hono/basic-auth';
 import { TheatrumError, type Theatrum, type IEntities, type IMethods } from '@theatrum/core';
@@ -17,6 +18,11 @@ interface ConsoleOptions {
     disableLogging?: boolean;
 }
 
+const prepareAsset = (path: string): string => {
+    const raw = decodeBase64(assets[path as keyof typeof assets].content);
+    return new TextDecoder().decode(raw);
+}
+
 class TheatrumConsole {
     app: Hono;
     theatrum: Theatrum<IEntities, IMethods>;
@@ -30,13 +36,25 @@ class TheatrumConsole {
         this.options = options || {};
 
         this.setup();
-        this.app.use('*', serveStatic({
-            root: import.meta.dirname + '/../build',
-        }));
     }
 
     public setup() {
         this.app.use(poweredBy({ serverName: 'Theatrum Console' }));
+
+        this.app.use((c, next) => {
+            let path = c.req.path.slice(1);
+
+            if (path === '') {
+                path = 'index.html';
+            }
+
+            if (assets[path as keyof typeof assets]) {
+                c.header('Content-Type', assets[path as keyof typeof assets].mime);
+                return Promise.resolve(c.body(prepareAsset(path)));
+            }
+
+            return next();
+        });
 
         this.log(`Telemetry - ${!this.options.disableTelemetry ? 'ENABLED' : 'DISABLED'}`);
         if (this.options.disableTelemetry) {

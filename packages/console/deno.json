@@ -1,13 +1,18 @@
 {
     "name": "@theatrum/console",
     "version": "0.1.2",
-    "imports": {
-        "hono": "jsr:@hono/hono@4.6.9"
-    },
     "exports": "./src/_.ts",
+    "license": "MIT",
+    "tasks": {
+        "build": "cd web && yarn build",
+        "bundle": "deno run --allow-read=./ --allow-write=./ tools/bundler.ts"
+    },
+    "imports": {
+        "hono": "jsr:@hono/hono@4.6.9",
+        "base64": "jsr:@std/encoding@1.0.5"
+    },
     "publish": {
         "include": [
-            "build",
             "src/**/*.ts",
             "LICENSE",
             "README.md"

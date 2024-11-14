@@ -264,8 +264,8 @@ class TheatrumConsole {
     }
 
     /**
-     * Method generate password when `enableBasicAuth` option enabled
-     * Override it if you would like to make own auth logic based on basic auth
+     * Method generate password when `enableBasicAuth` option enabled.
+     * Override it if you would like to make own auth logic based on basic auth.
      */
     protected generateCredentials(): string {
         this.password = Math.random().toString(36).slice(2);

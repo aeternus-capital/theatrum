@@ -1,3 +1,4 @@
 # Theatrum Console
+WebUI for easier locally development using Theatrum framework.
 
-See all details in our [documentation](https://aeternus-capital.github.io/theatrum)
+More info in our main module: [@theatrum/core](https://jsr.io/@theatrum/core)

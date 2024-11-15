@@ -1,5 +1,3 @@
-import { encodeBase64 } from 'base64';
-
 type Assets = {
     [key: string]: {
         mime: string;
@@ -32,7 +30,7 @@ const bundler = async (path: string, prefix: string = ''): Promise<Assets> => {
             const content = Deno.readFileSync(path + '/' + file.name);
             assets[fileName] = {
                 mime: getExt(fileName),
-                content: encodeBase64(new TextDecoder().decode(content)),
+                content: encodeURIComponent(new TextDecoder().decode(content)),
             };
         }
 

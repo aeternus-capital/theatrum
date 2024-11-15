@@ -2,15 +2,13 @@ import { Hono } from 'hono';
 import assets from './assets.ts';
 import { cors } from 'hono/cors';
 import Wrapper from './wrapper.ts';
-import { decodeBase64 } from 'base64';
 import { poweredBy } from 'hono/powered-by'
 import { basicAuth } from 'hono/basic-auth';
 import type { ConsoleOptions, Fetch } from './types.ts';
-import { TheatrumError, type Theatrum, type IEntities, type IMethods } from '@theatrum/core';
+import { TheatrumError, type Theatrum, type IEntities, type IMethods, type Entity } from '@theatrum/core';
 
 const prepareAsset = (path: string): string => {
-    const raw = decodeBase64(assets[path as keyof typeof assets].content);
-    return new TextDecoder().decode(raw);
+    return decodeURIComponent(assets[path as keyof typeof assets].content);
 }
 
 /**
@@ -148,7 +146,7 @@ class TheatrumConsole {
                                 {
                                     ...methods[x],
                                     name: x,
-                                    entities: methods[x].entities.map((x) => x.name),
+                                    entities: methods[x].entities.map((x: Entity<string, string>) => x.name),
                                     params: (
                                         Object.keys(methods[x].paramsSchema)
                                             .reduce((a, x) => {

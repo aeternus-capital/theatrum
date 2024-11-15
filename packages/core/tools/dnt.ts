@@ -19,9 +19,7 @@ const packageJson = {
 };
 
 await build({
-    shims: {
-        deno: true,
-    },
+    shims: {},
     packageManager: 'yarn',
     outDir: root + 'dnt',
     package: packageJson,

@@ -8,7 +8,6 @@
     "jsr:@std/assert@0.223": "0.223.0",
     "jsr:@std/assert@0.226": "0.226.0",
     "jsr:@std/bytes@0.223": "0.223.0",
-    "jsr:@std/encoding@1.0.5": "1.0.5",
     "jsr:@std/fmt@0.223": "0.223.0",
     "jsr:@std/fmt@1": "1.0.3",
     "jsr:@std/fs@0.223": "0.223.0",
@@ -59,9 +58,6 @@
     },
     "@std/bytes@0.223.0": {
       "integrity": "84b75052cd8680942c397c2631318772b295019098f40aac5c36cead4cba51a8"
-    },
-    "@std/encoding@1.0.5": {
-      "integrity": "ecf363d4fc25bd85bd915ff6733a7e79b67e0e7806334af15f4645c569fefc04"
     },
     "@std/fmt@0.223.0": {
       "integrity": "6deb37794127dfc7d7bded2586b9fc6f5d50e62a8134846608baf71ffc1a5208"
@@ -132,8 +128,7 @@
     "members": {
       "packages/console": {
         "dependencies": [
-          "jsr:@hono/hono@4.6.9",
-          "jsr:@std/encoding@1.0.5"
+          "jsr:@hono/hono@4.6.9"
         ]
       },
       "packages/core": {

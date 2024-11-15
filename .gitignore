@@ -13,7 +13,7 @@ temp
 .tmp
 **/dist
 **/build
-**/dtn
+**/dnt
 
 # logs
 *.log

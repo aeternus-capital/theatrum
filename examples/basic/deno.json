@@ -1,6 +1,6 @@
 {
     "tasks": {
-        "dev": "deno run -A --watch src/index.ts"
+        "dev": "deno run -A --watch ./src/index.ts"
     },
     "imports": {
         "👤/": "./src/entities/"

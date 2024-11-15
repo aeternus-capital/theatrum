@@ -80,10 +80,16 @@ export type InferMethodResult<T> = T extends {
     invoke: (...args: never[]) => infer Result;
 } ? Awaited<Result> : never;
 
-/** Executor tracer */
+/**
+ * Executor tracer
+ * @internal
+ */
 export type ExecuteTracer = (timestamp: number, event: string, data?: object | undefined) => void;
 
-/** Executor options */
+/**
+ * Executor options
+ * @internal
+ */
 export type ExecutorOptions<T extends object = object> = T & {
     tracer?: ExecuteTracer;
     getMethodNameByInstance: (method: Method) => string | null;
@@ -132,11 +138,17 @@ export type ExecutorMetrics = {
     Method
  */
 
-/** Method handler */
+/**
+ * Method handler
+ * @internal
+ */
 export type MethodHandler<Params, Result> =
     (params: Params, context: ExecutorContext<Entity<string> | Entity<string>[], any>) => Promise<Result>;
 
-/** Method params schema */
+/**
+ * Method params schema
+ * @internal
+ */
 export type MethodParams<Params> = {
     [P in keyof Required<Params>]: ZodType<Params[P]>;
 };
@@ -164,7 +176,10 @@ export interface MethodDocumentation<Params, Result> {
     examples?: MethodDocumentationExample<Params, Result>[];
 }
 
-/** Method options */
+/**
+ * Method options
+ * @internal
+ */
 export type MethodOptions<Params, Result> = {
     entities: Entity<string>[];
     roles: string[];
@@ -189,7 +204,10 @@ export interface IEntities {
     [k: string]: Entity<typeof k>;
 }
 
-/** TheatrumOptions */
+/**
+ * TheatrumOptions
+ * @internal
+ */
 export interface IOptions<Entities extends IEntities, Methods extends IMethods> {
     methods: Methods;
     entities: Entities;

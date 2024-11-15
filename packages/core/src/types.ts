@@ -93,7 +93,7 @@ type ReduceActors<A extends (Entity<string> | unknown)[], Acc = never> = A exten
 
 export type ExecutorContext<T extends Entity<string> | Entity<string>[], C extends object = object> =
     Partial<C> & {
-        execute: <T extends Method>(method: T, params: InferMethodParams<T>) => Promise<InferMethodResult<T>>;
+        run: <T extends Method>(method: T, params: InferMethodParams<T>) => Promise<InferMethodResult<T>>;
         actor: T extends Entity<string> ? InferActor<T> : T extends Entity<string>[] ? ReduceActors<T> : never;
         tracer: {
             sendEvent: (event: string, data?: object) => void;

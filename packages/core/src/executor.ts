@@ -111,9 +111,12 @@ class Executor<Methods extends IMethods, Context extends object = object> {
     }
 
     public exportMetrics(): ExecutorMetrics {
-        return Object.fromEntries(this.metrics.entries().map(([ key, value ]) => {
-            return [`user_${key.toLowerCase().replaceAll(' ', '_')}`, value];
-        }));
+        return Object.fromEntries(
+            Array.from(this.metrics.entries())
+                .map(([ key, value ]) => {
+                    return [`user_${key.toLowerCase().replaceAll(' ', '_')}`, value];
+                })
+        );
     }
 
     private runInternal<T extends Method>(method: T, params: InferMethodParams<T>): Promise<InferMethodResult<T>> {

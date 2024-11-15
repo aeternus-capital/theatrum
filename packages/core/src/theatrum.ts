@@ -10,10 +10,10 @@ import type { Actor, ExecutorOptions, IEntities, IMethods, IOptions, InferActorD
  * @example Basic usage
  * ```ts
  * import { Theatrum } from '@theatrum/core';
- * import UserEntity from './entities/user.ts';
+ * import UserEntity from '@/entities/user.ts';
  *
- * import MathSum from './math/sum.ts';
- * import MathMultiply from './math/multiply.ts';
+ * import MathSum from '@/math/sum.ts';
+ * import MathMultiply from '@/math/multiply.ts';
  *
  * // Create map of entities where key is entity name
  * const entities = {

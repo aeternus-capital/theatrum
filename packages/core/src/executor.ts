@@ -21,7 +21,7 @@ import type {
  *
  * @example Basic usage (through theatrum)
  * ```ts
- * import theatrum from './theatrum';
+ * import theatrum from '@/theatrum.ts';
  *
  * // Create actor
  * const actor = theatrum.createActor('user', [], {
@@ -176,8 +176,6 @@ class Executor<Methods extends IMethods, Context extends object = object> {
      *
      * @example Basic usage (in method)
      * ```ts
-     * import MathSum from './sum.ts';
-     *
      * const handler = async (params: any, ctx: ExecutorContext<typeof User>) => {
      *     const result = await ctx.run(MathSum, {
      *         a: 4,

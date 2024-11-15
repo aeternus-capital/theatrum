@@ -87,7 +87,7 @@ class Entity<T extends string, Roles extends string = string, Data = any> {
     public name: T;
     /** All available entity roles */
     public roles: Roles[];
-    /** Schema of entity data for validation */
+    /** Schema of actor data for validator */
     public schema: EntityParams<Data>;
     /** Documentation about entity, used in @theatrum/console */
     public docs: DocumentationEntity<Data>;

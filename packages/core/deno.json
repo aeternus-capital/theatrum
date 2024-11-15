@@ -4,7 +4,8 @@
     "exports": "./src/_.ts",
     "license": "MIT",
     "tasks": {
-        "dnt": "deno run -A ./tools/dnt.ts"
+        "dnt": "deno run -A ./tools/dnt.ts",
+        "lint": "deno doc --lint ./src/_.ts"
     },
     "imports": {
         "zod": "npm:zod@3.23.8"

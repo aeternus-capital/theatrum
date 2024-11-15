@@ -7,7 +7,7 @@ on:
             - dev
 
 jobs:
-    publish-jsr:
+    publish-core:
         runs-on: ubuntu-latest
         permissions:
             contents: read
@@ -17,5 +17,23 @@ jobs:
             - uses: denoland/setup-deno@v2
               with:
                   deno-version: v2.x
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 22.11.x
+            - run: cd packages/core
+            - run: deno task dnt
             - run: deno task publish:core
+    publish-console:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+        steps:
+            - uses: actions/checkout@v4
+            - uses: denoland/setup-deno@v2
+              with:
+                  deno-version: v2.x
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 22.11.x
+            - run: cd packages/console
             - run: deno task publish:console

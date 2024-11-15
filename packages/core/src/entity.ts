@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import Errors from './errors.ts';
-import type { Actor, EntityParams, EntityOptions, DocumentationEntity } from './types.ts';
+import type { Actor, EntityParams, EntityOptions, EntityDocumentation } from './types.ts';
 
 /**
  * # Entity
@@ -90,7 +90,7 @@ class Entity<T extends string, Roles extends string = string, Data = any> {
     /** Schema of actor data for validator */
     public schema: EntityParams<Data>;
     /** Documentation about entity, used in @theatrum/console */
-    public docs: DocumentationEntity<Data>;
+    public docs: EntityDocumentation<Data>;
 
     /**
      * Entity constructor

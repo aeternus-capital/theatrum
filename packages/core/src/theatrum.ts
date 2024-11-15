@@ -91,6 +91,7 @@ class Theatrum<Entities extends IEntities, Methods extends IMethods> {
      * Method create executor for actor
      *
      * @param {Actor} actor Actor for which the executor is being created
+     * @param {ExecutorOptions} options Executor options
      */
     public createExecutor<Context extends object = object>(actor: Actor, options?: Omit<ExecutorOptions<Context>, 'getMethodNameByInstance'>): Executor<Methods> {
         return new Executor<Methods, Context>(this.methods, actor, {

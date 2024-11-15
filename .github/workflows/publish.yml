@@ -23,6 +23,7 @@ jobs:
             - run: cd packages/core && deno task dnt
             - run: deno task publish:core
     publish-console:
+        needs: publish-core
         runs-on: ubuntu-latest
         permissions:
             contents: read

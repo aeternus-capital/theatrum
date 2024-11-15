@@ -274,7 +274,7 @@ class TheatrumConsole {
 
     /**
      * Method write data into stdout using `console.log`
-     * @param {string} str Information, which need to be logged
+     * @param {string} data Information, which need to be logged
      */
     protected log(data: string): void {
         if (!this.options.disableLogging) {

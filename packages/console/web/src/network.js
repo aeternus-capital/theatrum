@@ -1,4 +1,4 @@
-const BACKEND_URL = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:8000/api';
+const BACKEND_URL = process.env.NODE_ENV === 'production' ? './api' : 'http://localhost:8000/api';
 
 const handler = ({ result, error }) => new Promise((resolve) => {
     if (error) {

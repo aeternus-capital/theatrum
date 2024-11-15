@@ -14,4 +14,6 @@ jobs:
             id-token: write
         steps:
             - uses: actions/checkout@v4
-            - run: (curl -fsSL https://deno.land/install.sh | sh) && deno task publish-core
+            - run: curl -fsSL https://deno.land/install.sh | sh
+            - run: deno task publish:core
+            - run: deno task publish:console

@@ -1,11 +1,17 @@
 import type { Hono } from 'hono';
 
-/** @internal */
+/**
+ * Hono's fetcher
+ * @internal
+ */
 export type Fetch = Hono extends {
     fetch: infer F;
 } ? F : never;
 
-/** Theatrum console options */
+/**
+ * Theatrum console options
+ * @internal
+ */
 export interface ConsoleOptions {
     /**
      * Set header 'Access-Control-Allow-Origin: *'

@@ -1,6 +1,6 @@
 {
     "name": "@theatrum/console",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "exports": "./src/_.ts",
     "license": "MIT",
     "tasks": {

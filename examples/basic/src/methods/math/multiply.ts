@@ -14,7 +14,7 @@ const handler = async ({ a, b }: MathMultiplyParams, ctx: ExecutorContext<[typeo
     let result = 0;
 
     for (let i = 0; i < b; i++) {
-        result = await ctx.execute(MathSum, {
+        result = await ctx.run(MathSum, {
             a: result,
             b: a,
         });

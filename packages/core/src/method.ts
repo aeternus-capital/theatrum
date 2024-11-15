@@ -8,7 +8,7 @@ import {
     type MethodOptions,
     type ExecutorContext,
     MethodRoleCompareMode,
-    type DocumentationMethod,
+    type MethodDocumentation,
 } from './types.ts';
 
 /**
@@ -102,7 +102,7 @@ class Method<Params = any, Result = any> {
     /** Schema of method params for validator */
     public readonly paramsSchema: MethodParams<Params>;
     /** Documentation about method, used in @theatrum/console */
-    public readonly docs: DocumentationMethod<Params, Result>;
+    public readonly docs: MethodDocumentation<Params, Result>;
 
     /**
      * Method constructor

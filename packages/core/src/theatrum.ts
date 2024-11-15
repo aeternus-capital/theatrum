@@ -46,7 +46,7 @@ import type { Actor, ExecutorOptions, IEntities, IMethods, IOptions, InferActorD
  *     b: 5,
  * })
  *     .then((result) => console.log(result))  // 9
- *     .catch((error) => console.error(error));  // display error if it was thrown while execution
+ *     .catch((error) => console.error(error));  // error if it was thrown while execution
  *
  * // For auto-handling all errors use runWithWrapper
  * executor.runWithWrapper('math.sum', {

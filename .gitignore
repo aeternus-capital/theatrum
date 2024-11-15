@@ -13,7 +13,7 @@ temp
 .tmp
 **/dist
 **/build
-**/npm
+**/dnt
 
 # logs
 *.log

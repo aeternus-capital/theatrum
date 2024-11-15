@@ -7,13 +7,15 @@ on:
             - dev
 
 jobs:
-    publish:
+    publish-jsr:
         runs-on: ubuntu-latest
         permissions:
             contents: read
             id-token: write
         steps:
             - uses: actions/checkout@v4
-            - run: curl -fsSL https://deno.land/install.sh | sh
+            - uses: denoland/setup-deno@v2
+              with:
+                  deno-version: v2.x
             - run: deno task publish:core
             - run: deno task publish:console

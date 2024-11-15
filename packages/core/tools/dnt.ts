@@ -7,7 +7,7 @@ await emptyDir(root + 'npm');
 const packageJson = {
     name: denoJson.name,
     version: denoJson.version,
-    description: 'Framework for creating a multi-entity API backend',
+    description: 'Framework for developing a multi-entity API backend',
     license: denoJson.license,
     repository: {
         type: 'git',

@@ -13,6 +13,34 @@ import type {
     InferMethodResult,
 } from './types.ts';
 
+/**
+ * # Executor
+ * This module is sandbox for running methods.
+ * To create an executor, you need to specify the actor on whose behalf the methods will be executed.
+ * After creation executor generate a context which will be passed into all methods, that it runs.
+ *
+ * @example Basic usage (through theatrum)
+ * ```ts
+ * import theatrum from '@/theatrum.ts';
+ *
+ * // Create actor
+ * const actor = theatrum.createActor('user', [], {
+ *     userId: 1,
+ * });
+ *
+ * // Create executor
+ * const executor = theatrum.createExecutor(actor);
+ *
+ * // Run methods
+ * executor.run('math.sum', {
+ *     a: 4,
+ *     b: 5,
+ * })
+ *     .then((result) => console.log(result))  // 9
+ *     .catch((error) => console.error(error));  // error if it was thrown while execution
+ * ```
+ * @module
+ */
 class Executor<Methods extends IMethods, Context extends object = object> {
     private readonly methods: Methods;
     private readonly metrics: Map<string, string | number | boolean>;
@@ -20,6 +48,15 @@ class Executor<Methods extends IMethods, Context extends object = object> {
     private readonly tracer: ExecuteTracer | null;
     private readonly getMethodNameByInstance: (method: Method) => string | null;
 
+    /**
+     * Executor constructor
+     *
+     * @param {IMethods} methods Methods
+     * @param {Actor} actor Actor on whose behalf the methods will be executed
+     * @param {ExecutorOptions} options Executor options
+     *
+     * @constructor
+     */
     constructor(methods: Methods, actor: Actor, options: ExecutorOptions<Context>) {
         this.methods = methods;
         this.metrics = new Map<string, string | number | boolean>();
@@ -28,7 +65,7 @@ class Executor<Methods extends IMethods, Context extends object = object> {
         this.context = {
             ...options,
             actor,
-            execute: this.runInternal.bind(this),
+            run: this.runInternal.bind(this),
             tracer: {
                 sendEvent: this.sendTraceEvent.bind(this),
             },
@@ -46,6 +83,12 @@ class Executor<Methods extends IMethods, Context extends object = object> {
         });
     }
 
+    /**
+     * Method run one of theatrum methods by name
+     *
+     * @param method Method name
+     * @param params Method params
+     */
     public async run<T extends keyof Methods>(method: T, params: InferMethodParams<Methods[T]>): Promise<InferMethodResult<Methods[T]>> {
         this.sendTraceEvent('executor:run', {
             'internal:method': method,
@@ -92,6 +135,12 @@ class Executor<Methods extends IMethods, Context extends object = object> {
         return result;
     }
 
+    /**
+     * Method create wrapper around 'run' method which catching errors and transform it to normal response
+     *
+     * @param method Method name
+     * @param params Method params
+     */
     public async runWithWrapper<T extends keyof Methods>(method: T, params: InferMethodParams<Methods[T]>): Promise<ExecutorResponse<InferMethodResult<Methods[T]>>> {
         try {
             return {
@@ -110,6 +159,9 @@ class Executor<Methods extends IMethods, Context extends object = object> {
         }
     }
 
+    /**
+     * Method exports metrics which were recorded while the methods were executing
+     */
     public exportMetrics(): ExecutorMetrics {
         return Object.fromEntries(
             Array.from(this.metrics.entries())
@@ -119,6 +171,24 @@ class Executor<Methods extends IMethods, Context extends object = object> {
         );
     }
 
+    /**
+     * Method run one method from handler of another method
+     *
+     * @example Basic usage (in method)
+     * ```ts
+     * const handler = async (params: any, ctx: ExecutorContext<typeof User>) => {
+     *     const result = await ctx.run(MathSum, {
+     *         a: 4,
+     *         b: 5
+     *     });
+     *
+     *     return result;  // 9
+     * };
+     * ```
+     *
+     * @param method Method instance
+     * @param params Method params
+     */
     private runInternal<T extends Method>(method: T, params: InferMethodParams<T>): Promise<InferMethodResult<T>> {
         const methodName = this.tracer !== null ? this.getMethodNameByInstance(method) : null;
 
@@ -148,20 +218,41 @@ class Executor<Methods extends IMethods, Context extends object = object> {
         })
     }
 
+    /**
+     * Method create metric
+     *
+     * @param {string} key Metric name
+     * @param {string | number | boolean} value Metric value
+     */
     private setMetric(key: string, value: string | number | boolean): void {
         this.metrics.set(key, value);
     }
 
+    /**
+     * Method remove metric
+     *
+     * @param {string} key Metric name
+     */
     private unsetMetric(key: string): void {
         this.metrics.delete(key);
     }
 
+    /**
+     * Method create time metric
+     *
+     * @param {string} key Metric name
+     */
     private startRecordMetric(key: string): void {
         const now = Date.now();
         this.unsetMetric(key);
         this.setMetric(key, now);
     }
 
+    /**
+     * Method calculates how much time has passed since creation of time metric
+     *
+     * @param {string} key Metric name
+     */
     private endRecordMetric(key: string): void {
         const now = Date.now();
         const value = this.metrics.get(key);
@@ -171,6 +262,12 @@ class Executor<Methods extends IMethods, Context extends object = object> {
         }
     }
 
+    /**
+     * Method send event to tracer
+     *
+     * @param {string} event Event name
+     * @param {object} data Event data
+     */
     private sendTraceEvent(event: string, data?: object): void {
         if (this.tracer === null) {
             return;
@@ -179,7 +276,12 @@ class Executor<Methods extends IMethods, Context extends object = object> {
         this.tracer(Date.now(), event, data);
     }
 
-    private sendTraceEventFromMethod(method: string | null) {
+    /**
+     * Method create handler for specific method for sending event to tracer with more context
+     *
+     * @param {string | null} method Method name (if method not found in methods map, it will be called '<hidden method>' in console)
+     */
+    private sendTraceEventFromMethod(method: string | null): { (event: string, data?: object): void } {
         if (this.tracer === null) {
             return (_event: string, _data?: object): void => {};
         }

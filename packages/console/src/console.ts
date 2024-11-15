@@ -48,8 +48,8 @@ class TheatrumConsole {
     /**
      * Constructor
      *
-     * @param theatrum Use your existing theatrum object, created using @theatrum/core (See basic usage example)
-     * @param options Console options
+     * @param {Theatrum} theatrum Use your existing theatrum object, created using @theatrum/core (See basic usage example)
+     * @param {ConsoleOptions} options Console options
      */
     constructor(theatrum: Theatrum<IEntities, IMethods>, options?: ConsoleOptions) {
         this.app = new Hono();
@@ -274,11 +274,11 @@ class TheatrumConsole {
 
     /**
      * Method write data into stdout using `console.log`
-     * @param str Information, which need to be logged
+     * @param {string} data Information, which need to be logged
      */
-    protected log(str: string): void {
+    protected log(data: string): void {
         if (!this.options.disableLogging) {
-            console.log(`[Theatrum Console]: ${str}`);
+            console.log(`[Theatrum Console]: ${data}`);
         }
     }
 }

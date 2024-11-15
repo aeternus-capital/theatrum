@@ -9,6 +9,7 @@ import type { TheatrumError } from './errors.ts';
 
 interface DocumentationEntityExample<Data> {
     name: string;
+    description?: string;
     data: Data;
 }
 

@@ -11,8 +11,6 @@
 
 </div>
 
-<hr/>
-
 ## Features
 * 👯 Multi-entity model out-of-the-box
 * 💎 Native TypeScript under the hood

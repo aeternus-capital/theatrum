@@ -21,12 +21,12 @@ jobs:
                   fetch-depth: 0
             - uses: JetBrains/writerside-github-action@v4
               with:
-                  instance: 'Writerside/theatrum'
+                  instance: 'docs/theatrum'
                   artifact: 'webHelpTHEATRUM2-all.zip'
                   docker-version: '243.21565'
             - uses: JetBrains/writerside-github-action@v4
               with:
-                  instance: 'Writerside/theatrum_ru'
+                  instance: 'docs/theatrum_ru'
                   artifact: 'webHelpTHEATRUM_RU2-all.zip'
                   docker-version: '243.21565'
             - run: mkdir content

@@ -4,13 +4,13 @@
     "exports": "./src/_.ts",
     "license": "MIT",
     "tasks": {
+        "dnt": "deno run -A ./tools/dnt.ts",
         "build": "cd web && yarn build",
-        "bundle": "deno run --allow-read=./ --allow-write=./ tools/bundler.ts",
+        "bundle": "deno run --allow-read=./ --allow-write=./ ./tools/bundler.ts",
         "lint": "deno doc --lint ./src/_.ts"
     },
     "imports": {
-        "hono": "jsr:@hono/hono@4.6.9",
-        "base64": "jsr:@std/encoding@1.0.5"
+        "hono": "jsr:@hono/hono@4.6.9"
     },
     "publish": {
         "include": [

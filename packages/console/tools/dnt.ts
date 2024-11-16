@@ -7,7 +7,7 @@ await emptyDir(root + 'dnt');
 const packageJson = {
     name: denoJson.name,
     version: denoJson.version,
-    description: 'Framework for developing a multi-entity API backend',
+    description: 'Console for @theatrum/core',
     license: denoJson.license,
     repository: {
         type: 'git',
@@ -19,12 +19,17 @@ const packageJson = {
 };
 
 await build({
-    shims: {},
+    shims: {
+        deno: true,
+    },
     packageManager: 'yarn',
     outDir: root + 'dnt',
     package: packageJson,
-    importMap: root + 'deno.json',
+    importMap: root + 'dnt.json',
     entryPoints: [ root + 'src/_.ts' ],
+    mappings: {
+
+    },
     postBuild(): void {
         Deno.copyFileSync(root + 'README.md', root + 'dnt/README.md');
         Deno.copyFileSync(root + 'LICENSE', root + 'dnt/LICENSE.md');

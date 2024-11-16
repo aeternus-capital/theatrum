@@ -25,4 +25,5 @@
         <toc-element topic="example-errors.md"/>
     </toc-element>
     <toc-element topic="changelog.md"/>
+    <toc-element href="/ru" toc-title="🇷🇺 Читать на русском" />
 </instance-profile>

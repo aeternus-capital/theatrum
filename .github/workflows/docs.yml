@@ -1,0 +1,40 @@
+name: Publish docs
+
+on:
+    push:
+        branches:
+            - master
+            - dev
+
+jobs:
+    publish-docs:
+        runs-on: ubuntu-latest
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        permissions:
+            pages: write
+            id-token: write
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+            - uses: JetBrains/writerside-github-action@v4
+              with:
+                  instance: 'Writerside/theatrum'
+                  artifact: 'webHelpTHEATRUM2-all.zip'
+                  docker-version: '243.21565'
+            - uses: JetBrains/writerside-github-action@v4
+              with:
+                  instance: 'Writerside/theatrum_ru'
+                  artifact: 'webHelpTHEATRUM_RU2-all.zip'
+                  docker-version: '243.21565'
+            - run: mkdir content
+            - run: unzip -O UTF-8 -qq '${{ env.ARTIFACT }}' -d content/en
+            - run: unzip -O UTF-8 -qq '${{ env.ARTIFACT }}' -d content/ru
+            - uses: actions/configure-pages@v4
+            - uses: actions/upload-pages-artifact@v3
+              with:
+                  name: content
+            - id: deployment
+              uses: actions/deploy-pages@v4

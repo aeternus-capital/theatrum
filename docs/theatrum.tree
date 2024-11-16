@@ -25,5 +25,5 @@
         <toc-element topic="example-errors.md"/>
     </toc-element>
     <toc-element topic="changelog.md"/>
-    <toc-element href="/theatrum/ru/index.html" toc-title="🇷🇺 Читать на русском" />
+    <toc-element href="https://aeternus-capital.github.io/theatrum/ru" toc-title="🇷🇺 Читать на русском" />
 </instance-profile>

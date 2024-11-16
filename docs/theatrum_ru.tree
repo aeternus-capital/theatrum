@@ -25,5 +25,5 @@
         <toc-element topic="example-errors.ru.md"/>
     </toc-element>
     <toc-element topic="changelog.ru.md"/>
-    <toc-element href="/theatrum" toc-title="🇺🇸 Read on English" />
+    <toc-element href="/theatrum/index.html" toc-title="🇺🇸 Read on English" />
 </instance-profile>

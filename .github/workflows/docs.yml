@@ -30,8 +30,9 @@ jobs:
                   artifact: 'webHelpTHEATRUM_RU2-all.zip'
                   docker-version: '243.21565'
             - run: mkdir content
-            - run: unzip -O UTF-8 -qq 'artifacts/webHelpTHEATRUM2-all.zip' -d content/en
-            - run: unzip -O UTF-8 -qq 'artifacts/webHelpTHEATRUM_RU2-all.zip' -d content/ru
+            - run: ls && cd artifacts && ls && cd ../
+            - run: unzip -O UTF-8 -qq -d content/en ./artifacts/webHelpTHEATRUM2-all.zip
+            - run: unzip -O UTF-8 -qq -d content/ru ./artifacts/webHelpTHEATRUM_RU2-all.zip
             - uses: actions/configure-pages@v4
             - uses: actions/upload-pages-artifact@v3
               with:

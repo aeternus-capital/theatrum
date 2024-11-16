@@ -38,6 +38,9 @@ jobs:
             - run: cd packages/console
             - run: deno task publish:console
     publish-docs:
+        needs:
+            - publish-core
+            - publish-console
         runs-on: ubuntu-latest
         environment:
             name: github-pages

@@ -19,7 +19,4 @@ export default new Method<MathSumParams, MathSumResult>(handler, {
         a: Validator.number(),
         b: Validator.number(),
     },
-    docs: {
-        description: 'Метод складывает числа',
-    },
 });

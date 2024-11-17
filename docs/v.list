@@ -2,4 +2,6 @@
 <!DOCTYPE vars SYSTEM "https://resources.jetbrains.com/writerside/1.0/vars.dtd">
 <vars>
     <var name="core_package" value="@theatrum/core"/>
+    <var name="console_package" value="@theatrum/console"/>
+    <var name="repo_url" value="https://github.com/aeternus-capital/theatrum/tree/master"/>
 </vars>

@@ -11,9 +11,6 @@
 # temp
 temp
 .tmp
-**/dist
-**/build
-**/dnt
 
 # logs
 *.log

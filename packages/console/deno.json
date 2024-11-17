@@ -17,6 +17,9 @@
             "src/**/*.ts",
             "LICENSE",
             "README.md"
+        ],
+        "exclude": [
+            "!src/assets.ts"
         ]
     }
 }

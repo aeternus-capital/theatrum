@@ -35,9 +35,18 @@ jobs:
             - uses: actions/setup-node@v4
               with:
                   node-version: 22.11.x
-            - run: cd packages/console
+            - run: |
+                  cd packages/console/web
+                  yarn install --frozen-lockfile
+                  rm -rf node_modules
+                  cd ../
+                  deno task build
+                  deno task bundle
             - run: deno task publish:console
     publish-docs:
+        needs:
+            - publish-core
+            - publish-console
         runs-on: ubuntu-latest
         environment:
             name: github-pages

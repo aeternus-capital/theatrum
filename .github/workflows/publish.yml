@@ -38,10 +38,9 @@ jobs:
             - run: |
                   cd packages/console/web
                   yarn install --frozen-lockfile
-                  rm -rf node_modules
-                  cd ../
                   deno task build
                   deno task bundle
+                  rm -rf node_modules
             - run: deno task publish:console
     publish-docs:
         needs:

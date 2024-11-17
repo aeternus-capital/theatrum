@@ -4,10 +4,11 @@
 
 <div align="center">
 
+![Publish](https://github.com/aeternus-capital/theatrum/actions/workflows/publish.yml/badge.svg?branch=master)
+![FOSSA](https://app.fossa.com/api/projects/git%2Bgithub.com%2Faeternus-capital%2Ftheatrum.svg?type=small)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 ![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-blue.svg)
 ![Views](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Faeternus-capital%2Ftheatrum&count_bg=%23037EC6&title_bg=%23555555&icon=&icon_color=%230060FF&title=Views)
-![FOSSA](https://app.fossa.com/api/projects/git%2Bgithub.com%2Faeternus-capital%2Ftheatrum.svg?type=small)
 
 </div>
 

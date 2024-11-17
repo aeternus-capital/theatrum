@@ -6,7 +6,7 @@ on:
             - master
 
 jobs:
-    publish-core:
+    core:
         runs-on: ubuntu-latest
         permissions:
             contents: read
@@ -21,8 +21,8 @@ jobs:
                   node-version: 22.11.x
             - run: cd packages/core && deno task dnt
             - run: deno task publish:core
-    publish-console:
-        needs: publish-core
+    console:
+        needs: core
         runs-on: ubuntu-latest
         permissions:
             contents: read
@@ -43,10 +43,10 @@ jobs:
                   deno task bundle
                   rm -rf ./web/node_modules
             - run: deno task publish:console
-    publish-docs:
+    documentation:
         needs:
-            - publish-core
-            - publish-console
+            - core
+            - console
         runs-on: ubuntu-latest
         environment:
             name: github-pages

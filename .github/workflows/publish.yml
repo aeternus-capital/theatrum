@@ -38,6 +38,7 @@ jobs:
             - run: |
                   cd packages/console/web
                   yarn install --frozen-lockfile
+                  rm -rf node_modules
                   cd ../
                   deno task build
                   deno task bundle

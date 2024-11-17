@@ -1,14 +1,12 @@
-import User from '👤/User.ts';
 import { Theatrum } from '@theatrum/core';
 import { TheatrumConsole } from '@theatrum/console';
 
 const entities = {
-    'user': User,
+    'user': (await import('👤/User.ts')).default,
 };
 
 const methods = {
     'math.sum': (await import('./methods/math/sum.ts')).default,
-    'math.multiply': (await import('./methods/math/multiply.ts')).default,
 };
 
 const theatrum = new Theatrum<typeof entities, typeof methods>({
@@ -16,10 +14,9 @@ const theatrum = new Theatrum<typeof entities, typeof methods>({
     entities,
 });
 
+const console = new TheatrumConsole(theatrum);
+
 Deno.serve({
-    hostname: '127.0.0.1',
     port: 8000,
-    handler: (
-        new TheatrumConsole(theatrum, { disableTelemetry: true }).handle()
-    ),
+    handler: console.handle(),
 });

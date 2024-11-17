@@ -4,14 +4,10 @@ interface User {
     userId: number;
 }
 
-export default new Entity<'user', 'user.test', User>({
+export default new Entity<'user', never, User>({
     name: 'user',
-    roles: ['user.test'],
+    roles: [],
     schema: {
         userId: Validator.number(),
-    },
-    docs: {
-        displayName: 'Пользователь',
-        description: 'Сущность пользователя',
     },
 });

@@ -160,18 +160,6 @@ class Executor<Methods extends IMethods, Context extends object = object> {
     }
 
     /**
-     * Method exports metrics which were recorded while the methods were executing
-     */
-    public exportMetrics(): ExecutorMetrics {
-        return Object.fromEntries(
-            Array.from(this.metrics.entries())
-                .map(([ key, value ]) => {
-                    return [`user_${key.toLowerCase().replaceAll(' ', '_')}`, value];
-                })
-        );
-    }
-
-    /**
      * Method run one method from handler of another method
      *
      * @example Basic usage (in method)
@@ -215,7 +203,19 @@ class Executor<Methods extends IMethods, Context extends object = object> {
             tracer: {
                 sendEvent: this.sendTraceEventFromMethod(methodName).bind(this),
             },
-        })
+        });
+    }
+
+    /**
+     * Method exports metrics which were recorded while the methods were executing
+     */
+    public exportMetrics(): ExecutorMetrics {
+        return Object.fromEntries(
+            Array.from(this.metrics.entries())
+                .map(([ key, value ]) => {
+                    return [`user_${key.toLowerCase().replaceAll(' ', '_')}`, value];
+                })
+        );
     }
 
     /**

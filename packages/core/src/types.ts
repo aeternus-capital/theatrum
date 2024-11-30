@@ -9,7 +9,7 @@ import type { TheatrumError } from './errors.ts';
 
 /** @internal */
 export type EntityParams<Params> = {
-    [P in keyof Required<Params>]: ZodType<Params[P]>;
+    [P in keyof Required<Params>]: ZodType;
 };
 
 /** @internal */
@@ -150,7 +150,7 @@ export type MethodHandler<Params, Result> =
  * @internal
  */
 export type MethodParams<Params> = {
-    [P in keyof Required<Params>]: ZodType<Params[P]>;
+    [P in keyof Required<Params>]: ZodType;
 };
 
 /** Method role compare mode */

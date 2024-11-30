@@ -1,6 +1,6 @@
 {
     "name": "@theatrum/core",
-    "version": "0.1.3",
+    "version": "0.1.4-rc1",
     "exports": "./src/_.ts",
     "license": "MIT",
     "tasks": {

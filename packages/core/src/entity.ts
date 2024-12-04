@@ -131,8 +131,8 @@ class Entity<T extends string, Roles extends string = string, Data = any> {
      *
      * @param data Data which needs to pass validation
      */
-    public validateData(data: Data): boolean {
-        return z.object(this.schema).safeParse(data).success;
+    public validateData(data: Data): { success: boolean; data?: z.infer<z.ZodType> } {
+        return z.object(this.schema).safeParse(data);
     }
 
     /**
@@ -142,14 +142,16 @@ class Entity<T extends string, Roles extends string = string, Data = any> {
      * @param data Actor data
      */
     public createActor(roles: Roles[], data: Data): Actor<T, Roles[], Data> {
-        if (!this.validateRoles(roles) || !this.validateData(data)) {
+        const validatedData = this.validateData(data);
+
+        if (!this.validateRoles(roles) || !validatedData.success) {
             throw Errors.invalidActor(this.name);
         }
 
         return {
             entity: this.name,
             roles: roles,
-            ...data,
+            ...validatedData.data,
         };
     }
 }

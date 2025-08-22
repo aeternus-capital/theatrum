@@ -22,14 +22,12 @@ await build({
     shims: {
         deno: true,
     },
+    typeCheck: false,
     packageManager: 'yarn',
     outDir: root + 'dnt',
     package: packageJson,
     importMap: root + 'dnt.json',
     entryPoints: [ root + 'src/_.ts' ],
-    mappings: {
-
-    },
     postBuild(): void {
         Deno.copyFileSync(root + 'README.md', root + 'dnt/README.md');
         Deno.copyFileSync(root + 'LICENSE', root + 'dnt/LICENSE.md');

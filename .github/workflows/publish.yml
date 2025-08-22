@@ -62,13 +62,13 @@ jobs:
               with:
                   instance: 'docs/theatrum'
                   artifact: 'webHelpTHEATRUM2-all.zip'
-                  docker-version: '243.21565'
+                  docker-version: '2025.04.8412'
             - run: mv artifacts en
             - uses: JetBrains/writerside-github-action@v4
               with:
                   instance: 'docs/theatrum_ru'
                   artifact: 'webHelpTHEATRUM_RU2-all.zip'
-                  docker-version: '243.21565'
+                  docker-version: '2025.04.8412'
             - run: mv artifacts ru
             - run: mkdir content
             - run: unzip -O UTF-8 -qq -d ./content ./en/webHelpTHEATRUM2-all.zip

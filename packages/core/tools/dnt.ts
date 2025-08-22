@@ -1,4 +1,4 @@
-import { build, emptyDir } from 'jsr:@deno/dnt@0.41.3';
+import { build, emptyDir } from 'jsr:@deno/dnt@0.42.3';
 import denoJson from '../deno.json' with { type: 'json' };
 
 const root = import.meta.dirname + '/../';
@@ -20,6 +20,7 @@ const packageJson = {
 
 await build({
     shims: {},
+    typeCheck: false,
     packageManager: 'yarn',
     outDir: root + 'dnt',
     package: packageJson,

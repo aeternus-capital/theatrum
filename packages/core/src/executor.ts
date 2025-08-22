@@ -65,6 +65,7 @@ class Executor<Methods extends IMethods, Context extends object = object> {
         this.context = {
             ...options,
             actor,
+            isInternalRun: false,
             run: this.runInternal.bind(this),
             tracer: {
                 sendEvent: this.sendTraceEvent.bind(this),
@@ -200,6 +201,7 @@ class Executor<Methods extends IMethods, Context extends object = object> {
 
         return method.invoke(params, {
             ...this.context,
+            isInternalRun: true,
             tracer: {
                 sendEvent: this.sendTraceEventFromMethod(methodName).bind(this),
             },

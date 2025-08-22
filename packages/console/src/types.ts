@@ -19,11 +19,6 @@ export interface ConsoleOptions {
      */
     enableCORS?: boolean;
     /**
-     * Enable basic auth with auto-generated username and password
-     * @default false
-     */
-    enableBasicAuth?: boolean;
-    /**
      * Disable anonymous telemetry
      * We're using posthog. You can check which information we collect in source code ('web' folder)
      * @default false

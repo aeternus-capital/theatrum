@@ -2,18 +2,17 @@ import { Hono } from 'hono';
 import assets from './assets.ts';
 import { cors } from 'hono/cors';
 import Wrapper from './wrapper.ts';
-import { poweredBy } from 'hono/powered-by'
-import { basicAuth } from 'hono/basic-auth';
+import { poweredBy } from 'hono/powered-by';
 import type { ConsoleOptions, Fetch } from './types.ts';
 import { TheatrumError, type Theatrum, type IEntities, type IMethods, type Entity } from '@theatrum/core';
 
 const prepareAsset = (path: string): string => {
     return decodeURIComponent(assets[path as keyof typeof assets].content);
-}
+};
 
 /**
  * # Theatrum Console
- * WebUI for easier locally development using Theatrum framework
+ * WebUI for easier local development using Theatrum framework
  *
  * @example Basic usage
  * ```typescript
@@ -38,10 +37,8 @@ const prepareAsset = (path: string): string => {
 class TheatrumConsole {
     /** @internal */
     public app: Hono;
-    private theatrum: Theatrum<IEntities, IMethods>;
-    private username: string = 'theatrum';
-    private password: string = '';
     private options: ConsoleOptions;
+    private theatrum: Theatrum<IEntities, IMethods>;
 
     /**
      * Constructor
@@ -84,19 +81,6 @@ class TheatrumConsole {
         this.log(`CORS (same host) — ${this.options.enableCORS ? 'ENABLED' : 'DISABLED'}`);
         if (this.options.enableCORS) {
             this.app.use(cors());
-        }
-
-        this.log(`Secured access (basic auth) — ${this.options.enableBasicAuth ? 'ENABLED' : 'DISABLED'}`);
-        if (this.options.enableBasicAuth) {
-            this.generateCredentials();
-
-            this.app.use(basicAuth({
-                username: this.username,
-                password: this.password,
-            }));
-
-            this.log(`Username: ${this.username}`);
-            this.log(`Auto-generated password: ${this.password}`);
         }
 
         this.app.get('/api/flags', (c) => {
@@ -259,15 +243,6 @@ class TheatrumConsole {
     /** Method return Hono's fetch property */
     public handle(): Fetch {
         return this.app.fetch;
-    }
-
-    /**
-     * Method generate password when `enableBasicAuth` option enabled.
-     * Override it if you would like to make own auth logic based on basic auth.
-     */
-    protected generateCredentials(): string {
-        this.password = Math.random().toString(36).slice(2);
-        return this.password;
     }
 
     /**

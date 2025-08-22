@@ -1,10 +1,10 @@
 {
-  "version": "4",
+  "version": "5",
   "specifiers": {
     "jsr:@david/code-block-writer@^13.0.2": "13.0.3",
     "jsr:@deno/cache-dir@~0.10.3": "0.10.3",
     "jsr:@deno/dnt@0.41.3": "0.41.3",
-    "jsr:@hono/hono@4.6.9": "4.6.9",
+    "jsr:@hono/hono@4.9.4": "4.9.4",
     "jsr:@std/assert@0.223": "0.223.0",
     "jsr:@std/assert@0.226": "0.226.0",
     "jsr:@std/bytes@0.223": "0.223.0",
@@ -21,7 +21,7 @@
     "jsr:@std/path@~0.225.2": "0.225.2",
     "jsr:@ts-morph/bootstrap@0.24": "0.24.0",
     "jsr:@ts-morph/common@0.24": "0.24.0",
-    "npm:zod@3.23.8": "3.23.8"
+    "npm:zod@4.0.17": "4.0.17"
   },
   "jsr": {
     "@david/code-block-writer@13.0.3": {
@@ -47,8 +47,8 @@
         "jsr:@ts-morph/bootstrap"
       ]
     },
-    "@hono/hono@4.6.9": {
-      "integrity": "4d4975f5c023d4416d26e6dd4a498c56e59958561733f56f55a9be57f023603b"
+    "@hono/hono@4.9.4": {
+      "integrity": "de006e32f3bab18e5a5bed4c75c5e0aaa46958d3653e6646b534a874d690dccc"
     },
     "@std/assert@0.223.0": {
       "integrity": "eb8d6d879d76e1cc431205bd346ed4d88dc051c6366365b1af47034b0670be24"
@@ -120,20 +120,20 @@
     }
   },
   "npm": {
-    "zod@3.23.8": {
-      "integrity": "sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g=="
+    "zod@4.0.17": {
+      "integrity": "sha512-1PHjlYRevNxxdy2JZ8JcNAw7rX8V9P1AKkP+x/xZfxB0K5FYfuV+Ug6P/6NVSR2jHQ+FzDDoDHS04nYUsOIyLQ=="
     }
   },
   "workspace": {
     "members": {
       "packages/console": {
         "dependencies": [
-          "jsr:@hono/hono@4.6.9"
+          "jsr:@hono/hono@4.9.4"
         ]
       },
       "packages/core": {
         "dependencies": [
-          "npm:zod@3.23.8"
+          "npm:zod@4.0.17"
         ]
       }
     }

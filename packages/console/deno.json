@@ -1,6 +1,6 @@
 {
     "name": "@theatrum/console",
-    "version": "0.1.10-rc2",
+    "version": "0.2.0",
     "exports": "./src/_.ts",
     "license": "MIT",
     "tasks": {
@@ -10,7 +10,7 @@
         "lint": "deno doc --lint ./src/_.ts"
     },
     "imports": {
-        "hono": "jsr:@hono/hono@4.6.9"
+        "hono": "jsr:@hono/hono@4.9.4"
     },
     "publish": {
         "include": [

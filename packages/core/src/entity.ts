@@ -151,7 +151,7 @@ class Entity<T extends string, Roles extends string = string, Data = any> {
         return {
             entity: this.name,
             roles: roles,
-            ...validatedData.data,
+            ...validatedData.data as Data,
         };
     }
 }

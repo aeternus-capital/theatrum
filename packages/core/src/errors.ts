@@ -108,7 +108,8 @@ const accessDenied = (): TheatrumError => {
  */
 const invalidParams = (e: unknown): TheatrumError => {
     if (e instanceof ZodError) {
-        const error = e.errors.filter((x) => x.path.length > 0)[0];
+        // deno-lint-ignore no-explicit-any
+        const error = e.errors.filter((x: any) => x.path.length > 0)[0];
         if (error) {
             return new TheatrumError(TheatrumErrorCode.INVALID_PARAMS, `Invalid param '${error.path.join('.')}': ${error.message}`);
         }
